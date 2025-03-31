@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #F0F2F5; -fx-padding: 20px;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.course.taxesfront.controllers.DashboardController">
+
+    <!-- Заголовок -->
+    <Label layoutX="20.0" layoutY="10.0" style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Налоговый расчет" />
+
+    <!-- Информация о пользователе -->
+    <HBox layoutX="800.0" layoutY="10.0" spacing="10" />
+
+    <!-- Фильтры (слева) -->
+    <VBox layoutX="20.0" layoutY="70.0" spacing="15" style="-fx-alignment: center-left;">
+        <Label text="Фильтр по году:" />
+        <ComboBox fx:id="yearFilter" />
+        <Label text="Тип дохода:" />
+        <ComboBox fx:id="incomeTypeFilter" />
+        <Button fx:id="applyFiltersBtn" style="-fx-background-color: #1976D2; -fx-text-fill: white; -fx-font-weight: bold;" text="Применить" />
+    </VBox>
+
+    <!-- Таблицы (в центре) -->
+    <VBox layoutX="202.0" layoutY="25.0" spacing="20" style="-fx-alignment: center;">
+        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Доходы" />
+        <TableView fx:id="incomeTable" prefHeight="250.0" prefWidth="600.0">
+            <columns>
+                <TableColumn fx:id="idColumn" prefWidth="50.0" text="ID" />
+                <TableColumn fx:id="typeColumn" prefWidth="120.0" text="Тип" />
+                <TableColumn fx:id="amountColumn" prefWidth="120.0" text="Сумма" />
+                <TableColumn fx:id="dateColumn" prefWidth="150.0" text="Дата" />
+                <TableColumn fx:id="sourceColumn" prefWidth="150.0" text="Источник" />
+            </columns>
+        </TableView>
+
+        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Имущество" />
+        <TableView fx:id="propertyTable" prefHeight="200.0" prefWidth="600.0">
+            <columns>
+                <TableColumn fx:id="propertyIdColumn" prefWidth="50.0" text="ID" />
+                <TableColumn fx:id="propertyPriceColumn" prefWidth="120.0" text="Цена" />
+                <TableColumn fx:id="propertyDescriptionColumn" prefWidth="200.0" text="Описание" />
+                <TableColumn fx:id="propertyDateColumn" prefWidth="150.0" text="Дата" />
+                <TableColumn fx:id="propertyTypeColumn" prefWidth="120.0" text="Тип" />
+            </columns>
+        </TableView>
+    </VBox>
+
+    <!-- Кнопки действий (под таблицами) -->
+    <HBox layoutX="648.0" layoutY="660.0" spacing="15" style="-fx-alignment: center;">
+        <Button fx:id="exportExcelBtn" text="Экспорт в Excel" />
+        <Button fx:id="exportPdfBtn" text="Экспорт в PDF" />
+        <Button fx:id="refreshBtn" text="Обновить" />
+        <Button fx:id="calculateTaxesBtn" onAction="#handleCalculateTaxes" style="-fx-background-color: red; -fx-text-fill: white; -fx-font-weight: bold;" text="Рассчитать Налоги" />
+    </HBox>
+
+    <!-- Форма добавления доходов (справа) -->
+    <VBox layoutX="817.0" layoutY="70.0" spacing="10" style="-fx-background-color: white; -fx-padding: 15px; -fx-border-radius: 10px; -fx-alignment: center-left;">
+        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Добавить доход" />
+        <HBox spacing="10">
+            <Label text="Тип:" />
+            <ComboBox fx:id="newIncomeType" />
+        </HBox>
+        <HBox spacing="10">
+            <Label text="Сумма:" />
+            <TextField fx:id="newIncomeAmount" promptText="Введите сумму" />
+        </HBox>
+        <HBox spacing="10">
+            <Label text="Дата:" />
+            <DatePicker fx:id="newIncomeDate" />
+        </HBox>
+        <HBox spacing="10">
+            <Label text="Источник:" />
+            <TextField fx:id="newIncomeSource" promptText="Введите источник" />
+        </HBox>
+        <Button fx:id="addIncomeBtn" style="-fx-background-color: #388E3C; -fx-text-fill: white; -fx-font-weight: bold;" text="Добавить" />
+    </VBox>
+
+    <VBox layoutX="202.0" layoutY="605.0" spacing="10" style="-fx-padding: 15px; -fx-background-color: #ffffff;">
+        <HBox alignment="CENTER_RIGHT" spacing="20">
+            <Label style="-fx-font-size: 14px; -fx-font-weight: bold;" text="Общий доход:" />
+            <Label fx:id="totalIncomesLabel" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #388E3C;" />
+        </HBox>
+        <HBox alignment="CENTER_RIGHT" spacing="20">
+            <Label style="-fx-font-size: 14px; -fx-font-weight: bold;" text="Общий стоимость имущество:" />
+            <Label fx:id="totalPropertiesLabel" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #388E3C;" />
+        </HBox>
+    </VBox>
+
+    <!-- Выход -->
+    <Button fx:id="logoutButton" layoutX="982.0" layoutY="23.0" onAction="#handleLogout" style="-fx-background-color: #D32F2F; -fx-text-fill: white; -fx-font-weight: bold;" text="Выход" />
+     <Label layoutX="768.0" layoutY="27.0" style="-fx-font-weight: bold;" text="Пользователь:" />
+     <Label fx:id="usernameLabel" layoutX="867.0" layoutY="27.0" text="Имя" />
+</AnchorPane>

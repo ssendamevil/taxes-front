@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.course.taxesfront.controllers.DashboardController"
+            prefHeight="550.0" prefWidth="750.0">
+
+    <Label text="Налоговый расчет" layoutX="20.0" layoutY="10.0"
+           style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+
+    <Label text="Текущие доходы" layoutX="20.0" layoutY="40.0"
+           style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+
+    <!-- Фильтры -->
+    <Label text="Фильтр по году:" layoutX="20.0" layoutY="75.0"/>
+    <ComboBox fx:id="yearFilter" layoutX="120.0" layoutY="70.0"/>
+
+    <Label text="Тип дохода:" layoutX="250.0" layoutY="75.0"/>
+    <ComboBox fx:id="incomeTypeFilter" layoutX="320.0" layoutY="70.0"/>
+
+    <Button text="Применить" layoutX="500.0" layoutY="70.0" fx:id="applyFiltersBtn"/>
+
+    <!-- Таблица доходов -->
+    <TableView fx:id="incomeTable" layoutX="20.0" layoutY="110.0" prefWidth="700.0" prefHeight="250.0">
+        <columns>
+            <TableColumn fx:id="idColumn" text="ID" prefWidth="50.0"/>
+            <TableColumn fx:id="typeColumn" text="Тип" prefWidth="120.0"/>
+            <TableColumn fx:id="amountColumn" text="Сумма" prefWidth="120.0"/>
+            <TableColumn fx:id="dateColumn" text="Дата" prefWidth="150.0"/>
+            <TableColumn fx:id="sourceColumn" text="Источник" prefWidth="150.0"/>
+        </columns>
+    </TableView>
+
+    <!-- Форма для добавления доходов -->
+    <Label text="Добавить доход" layoutX="20.0" layoutY="370.0"
+           style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+
+    <Label text="Тип:" layoutX="20.0" layoutY="400.0"/>
+    <ComboBox fx:id="newIncomeType" layoutX="70.0" layoutY="395.0"/>
+
+    <Label text="Сумма:" layoutX="240.0" layoutY="400.0"/>
+    <TextField fx:id="newIncomeAmount" layoutX="280.0" layoutY="395.0" prefWidth="100.0"/>
+
+    <Label text="Дата:" layoutX="400.0" layoutY="400.0"/>
+    <DatePicker fx:id="newIncomeDate" layoutX="450.0" layoutY="395.0"/>
+
+    <Label text="Источник:" layoutX="20.0" layoutY="430.0"/>
+    <TextField fx:id="newIncomeSource" layoutX="90.0" layoutY="425.0" prefWidth="290.0"/>
+
+    <Button text="Добавить" layoutX="400.0" layoutY="425.0" fx:id="addIncomeBtn"/>
+
+    <!-- Общая сумма налогов -->
+    <Label text="Общая сумма доходов:" layoutX="20.0" layoutY="470.0"
+           style="-fx-font-size: 14px;"/>
+    <Label fx:id="totalIncomesLabel" layoutX="180.0" layoutY="470.0"
+           style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+
+    <!-- Кнопки действий -->
+    <Button text="Обновить" layoutX="20.0" layoutY="500.0" fx:id="refreshBtn"/>
+    <Button text="Экспорт в Excel" layoutX="120.0" layoutY="500.0" fx:id="exportExcelBtn"/>
+    <Button text="Экспорт в PDF" layoutX="250.0" layoutY="500.0" fx:id="exportPdfBtn" onAction="#handleDownloadPdf"/>
+    <Button text="Рассчитать Налоги" layoutX="600.0" layoutY="500.0" fx:id="calculateTaxesBtn" onAction="#handleCalculateTaxes"
+            style="-fx-background-color: red; -fx-text-fill: white; -fx-font-weight: bold;"/>
+</AnchorPane>

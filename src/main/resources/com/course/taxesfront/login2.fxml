@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<StackPane xmlns:fx="http://javafx.com/fxml"
+           fx:controller="com.course.taxesfront.controllers.LoginController"
+           style="-fx-background-color: #E3F2FD; -fx-padding: 20px;"
+           prefWidth="400" prefHeight="500">
+
+    <VBox spacing="15" alignment="CENTER"
+          style="-fx-background-color: white; -fx-padding: 40px; -fx-border-radius: 12px; -fx-background-radius: 12px;
+                 -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 15, 0, 0, 7);">
+
+        <Label text="Вход в систему" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #1565C0;"/>
+
+        <VBox spacing="12" alignment="CENTER_LEFT" style="-fx-padding: 20px;">
+            <Label text="Имя пользователя:" style="-fx-font-size: 14px;"/>
+            <TextField fx:id="usernameField" promptText="Введите имя пользователя" style="-fx-pref-width: 250px;"/>
+
+            <Label text="Пароль:" style="-fx-font-size: 14px;"/>
+            <PasswordField fx:id="passwordField" promptText="Введите пароль" style="-fx-pref-width: 250px;"/>
+
+            <Label fx:id="loginError" text="" textFill="red" visible="false" style="-fx-font-size: 12px;"/>
+
+            <Button text="Войти" fx:id="loginButton" onAction="#handleLogin"
+                    style="-fx-background-color: #2E7D32; -fx-text-fill: white; -fx-font-weight: bold; -fx-pref-width: 250px; -fx-pref-height: 40px; -fx-border-radius: 5px; -fx-background-radius: 5px;"/>
+
+            <Separator style="-fx-background-color: #B0BEC5; -fx-pref-width: 250px;"/>
+
+            <Button text="Регистрация" fx:id="registerButton" onAction="#openRegisterWindow"
+                    style="-fx-background-color: #1976D2; -fx-text-fill: white; -fx-font-weight: bold; -fx-pref-width: 250px; -fx-pref-height: 40px; -fx-border-radius: 5px; -fx-background-radius: 5px;"/>
+        </VBox>
+    </VBox>
+</StackPane>

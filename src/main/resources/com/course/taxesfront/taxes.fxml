@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.course.taxesfront.controllers.TaxController"
+            prefHeight="600.0" prefWidth="1050.0"
+            style="-fx-background-color: #f4f4f4;">
+
+    <!-- Верхняя панель -->
+    <top>
+        <HBox spacing="20" alignment="CENTER_LEFT" style="-fx-background-color: #3f51b5; -fx-padding: 10px;">
+            <Label text="Налоговый расчет" style="-fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold;"/>
+        </HBox>
+    </top>
+
+    <!-- Левая панель (Фильтры) -->
+    <left>
+        <VBox spacing="10" style="-fx-background-color: #ffffff; -fx-padding: 15px; -fx-border-color: #dddddd; -fx-border-width: 0 1px 0 0;">
+            <Label text="Фильтры" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+            <Label text="Год:"/>
+            <ComboBox fx:id="yearFilter"/>
+            <Label text="Тип дохода:"/>
+            <ComboBox fx:id="taxTypeFilter"/>
+            <Label text="Сумма от:"/>
+            <TextField fx:id="minAmountFilter"/>
+            <Label text="до:"/>
+            <TextField fx:id="maxAmountFilter"/>
+            <Button text="Применить" fx:id="applyFiltersBtn" style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+        </VBox>
+    </left>
+
+    <!-- Основное содержимое (Таблица) -->
+    <center>
+        <VBox spacing="10" style="-fx-padding: 15px;">
+            <TableView fx:id="taxTable" prefWidth="700">
+                <columns>
+                    <TableColumn fx:id="idColumn" text="ID" prefWidth="50"/>
+                    <TableColumn fx:id="typeColumn" text="Тип" prefWidth="150"/>
+                    <TableColumn fx:id="dateColumn" text="Дата" prefWidth="150"/>
+                    <TableColumn fx:id="descriptionColumn" text="Источник" prefWidth="150"/>
+                    <TableColumn fx:id="taxRatesColumn" text="Проценты от дохода" prefWidth="150"/>
+                    <TableColumn fx:id="taxAmountColumn" text="Налог" prefWidth="120"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
+
+    <!-- Нижняя панель (Кнопки и итоги) -->
+    <bottom>
+        <VBox spacing="10" style="-fx-padding: 15px; -fx-background-color: #ffffff;">
+            <HBox spacing="20" alignment="CENTER_RIGHT">
+                <Label text="Общий доход:" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+                <Label fx:id="totalIncomeLabel" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #388E3C;"/>
+            </HBox>
+            <HBox spacing="20" alignment="CENTER_RIGHT">
+                <Label text="Общий стоимость имущество:" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+                <Label fx:id="totalPropertyLabel" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #388E3C;"/>
+            </HBox>
+            <HBox spacing="20" alignment="CENTER_RIGHT">
+                <Label text="Общая сумма налогов:" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+                <Label fx:id="totalTaxesLabel" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #d32f2f;"/>
+            </HBox>
+            <HBox spacing="10">
+                <Button text="Обновить" fx:id="refreshBtn"/>
+                <Button text="Экспорт в Excel" fx:id="exportExcelBtn"/>
+                <Button text="Экспорт в PDF" fx:id="exportPdfBtn"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button text="Рассчитать налоги" fx:id="calculateTaxesBtn"
+                        style="-fx-background-color: #d32f2f; -fx-text-fill: white; -fx-font-weight: bold;"/>
+                <Button text="Назад" fx:id="backBtn" onAction="#handleBack" style="-fx-background-color: #757575; -fx-text-fill: white;"/>
+                <Button text="Анализ" fx:id="analysisBtn" onAction="#openAnalysisWindow" style="-fx-background-color: #3f51b5; -fx-text-fill: white;"/>
+            </HBox>
+        </VBox>
+    </bottom>
+</BorderPane>
